@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SCARICO_1</string>
+    <string-array name="famiglie_array">
+        <item>Generale</item>
+        <item>Accessori Rullo</item>
+        <item>Accessori Sole</item>
+        <item>Binari</item>
+        <item>Tessuti Sole</item>
+        <item>Tessuti Rullo</item>
+        <item>Profili</item>
+    </string-array>
+</resources>

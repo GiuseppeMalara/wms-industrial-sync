@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <color name="barra_sfondo_scuro">#212121</color>
+    <color name="barra_testo_bianco">#FFFFFF</color>
+    <color name="blu_accento">#1976D2</color>
+
+    <style name="Base.Theme.SCARICO_1" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/barra_sfondo_scuro</item>
+        <item name="colorPrimaryDark">@android:color/black</item>
+        <item name="colorAccent">@color/blu_accento</item>
+        <item name="android:textColorPrimary">#000000</item>
+
+        <item name="actionBarStyle">@style/CustomActionBar</item>
+        <item name="android:actionBarStyle">@style/CustomActionBar</item>
+
+        <item name="actionBarTheme">@style/CustomActionBarTheme</item>
+        <item name="android:actionBarTheme">@style/CustomActionBarTheme</item>
+
+        <!-- MENU A 3 PUNTINI SCALATO PER TABLET -->
+        <item name="actionBarPopupTheme">@style/CustomPopupTheme</item>
+        <item name="android:actionBarPopupTheme">@style/CustomPopupTheme</item>
+    </style>
+
+    <style name="CustomActionBar" parent="Widget.AppCompat.ActionBar.Solid">
+        <item name="android:background">@color/barra_sfondo_scuro</item>
+        <item name="background">@color/barra_sfondo_scuro</item>
+        <item name="android:height">64dp</item>
+        <item name="height">64dp</item>
+        <item name="android:titleTextStyle">@style/CustomTitleText</item>
+        <item name="titleTextStyle">@style/CustomTitleText</item>
+    </style>
+
+    <style name="CustomTitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/barra_testo_bianco</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CustomActionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/barra_testo_bianco</item>
+        <item name="colorControlNormal">@color/barra_testo_bianco</item>
+        <item name="android:colorControlNormal">@color/barra_testo_bianco</item>
+    </style>
+
+    <!-- STILE VOCI MENU DEI 3 PUNTINI (TESTO 22sp NERO E GRASSETTO) -->
+    <style name="CustomPopupTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColor">#000000</item>
+        <item name="android:itemTextAppearance">@style/CustomMenuItemText</item>
+    </style>
+
+    <style name="CustomMenuItemText" parent="TextAppearance.AppCompat.Widget.PopupMenu.Large">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.SCARICO_1" parent="Base.Theme.SCARICO_1" />
+</resources>

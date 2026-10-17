@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:id="@+id/layoutPrincipale"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:layout_above="@id/barraNavigazioneSingola">
+
+        <!-- SPINNER CATEGORIE -->
+        <Spinner
+            android:id="@+id/spinNomeFile"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginBottom="14dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp" />
+
+        <!-- RICERCA STANDARD E MODALITÀ A -->
+        <LinearLayout
+            android:id="@+id/bloccoRicercaStandard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layoutPulsantiSubCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp"
+                android:weightSum="2"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoSearch"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="62dp"
+                    android:hint="Cerca articolo..."
+                    android:textSize="22sp"
+                    android:textColor="#000000"
+                    android:textColorHint="#757575"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:background="#FFFFFF"
+                    android:elevation="3dp" />
+
+                <Button
+                    android:id="@+id/btnTagliaSlash"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="8dp"
+                    android:text="/"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#FF9800"
+                    android:textColor="#FFFFFF"
+                    android:elevation="3dp"
+                    android:visibility="gone" />
+
+                <ImageButton
+                    android:id="@+id/btnSvuotaRicerca"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="8dp"
+                    android:background="#E0E0E0"
+                    android:src="@android:drawable/ic_menu_close_clear_cancel"
+                    android:elevation="3dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtGiacenzaA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:layout_marginTop="12dp"
+                android:background="#FFFFFF"
+                android:elevation="3dp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:lineSpacingExtra="4dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/contenitoreLottiMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="12dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="14dp">
+
+                <EditText
+                    android:id="@+id/etQuantita"
+                    android:layout_width="0dp"
+                    android:layout_height="62dp"
+                    android:layout_weight="1"
+                    android:hint="Quantità"
+                    android:textSize="22sp"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:textColor="#000000"
+                    android:textColorHint="#757575"
+                    android:background="#FFFFFF"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:elevation="3dp"
+                    android:layout_marginEnd="10dp"/>
+
+                <Button
+                    android:id="@+id/btnAggiungi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="62dp"
+                    android:minWidth="160dp"
+                    android:text="AGGIUNGI"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#4CAF50"
+                    android:textColor="#FFFFFF"
+                    android:elevation="3dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- BLOCCO PROFILI (MODALITÀ B) -->
+        <LinearLayout
+            android:id="@+id/bloccoProfili"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <LinearLayout
+                    android:id="@+id/contenitoreStepProfili"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="6dp"/>
+            </ScrollView>
+
+            <!-- BARRA PULSANTI PROFILO INGRANDITI -->
+            <LinearLayout
+                android:id="@+id/barraPulsantiProfilo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:visibility="gone"
+                android:background="#E0E0E0"
+                android:gravity="end">
+
+                <Button
+                    android:id="@+id/btnIndietroProfilo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="62dp"
+                    android:minWidth="180dp"
+                    android:text="⬅ INDIETRO"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#78909C"
+                    android:layout_marginEnd="12dp"/>
+                <Button
+                    android:id="@+id/btnHomeProfilo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="62dp"
+                    android:minWidth="180dp"
+                    android:text="CATEGORIE"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#FF9800"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- BARRA INFERIORE LISTA SCARICHI -->
+    <LinearLayout
+        android:id="@+id/barraNavigazioneSingola"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:elevation="14dp"
+        android:padding="12dp">
+
+        <Button
+            android:id="@+id/btnVediCarrello"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:text="VEDI LISTA SCARICHI"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#1976D2" />
+    </LinearLayout>
+
+    <!-- SCHERMATA RIEPILOGO -->
+    <LinearLayout
+        android:id="@+id/layoutRiepilogo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Riepilogo Scarico"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:padding="18dp"
+            android:background="#E0E0E0"
+            android:gravity="center"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <LinearLayout
+                android:id="@+id/contenitoreListaRiepilogo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp"/>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="14dp"
+            android:gravity="end"
+            android:background="#F5F5F5">
+
+            <Button
+                android:id="@+id/btnInviaScarico"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="68dp"
+                android:text="INVIA AL DB"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:backgroundTint="#4CAF50"
+                android:layout_marginEnd="14dp"/>
+
+            <Button
+                android:id="@+id/btnChiudiRiepilogo"
+                android:layout_width="wrap_content"
+                android:layout_height="68dp"
+                android:minWidth="150dp"
+                android:text="INDIETRO"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:backgroundTint="#78909C"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBarInvio"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+</RelativeLayout>
