@@ -20,9 +20,9 @@ L'infrastruttura si basa su un'architettura a tre livelli con disaccoppiamento d
            │ (HTTP REST / JSON / Cache Locale)
            ▼
 [ Middleware Locale On-Premise (PHP 8.x / MySQL) ]
-  ├── get_articoli.php       ─> Catalogo dinamico con mappatura lotti e stock
-  ├── salva_scarico.php      ─> Transazioni atomiche di prelievo con rollback ACID
-  ├── importa_arca.php       ─> Batch sync mattutino con filtri blacklist
+  ├── api_articoli.php       ─> Catalogo dinamico con mappatura lotti e stock
+  ├── api_scarico.php      ─> Transazioni atomiche di prelievo con rollback ACID
+  ├── importa_erp.php       ─> Batch sync mattutino con filtri blacklist
   └── Dashboard Gestionale   ─> Modifica, storno matematico e protezione CSRF
            │
            │ (Pipeline Asincrona Hot-Folder CSV)
@@ -63,7 +63,7 @@ Applicazione client nativa sviluppata in **Kotlin**, progettata per l'uso su tab
 Middleware sviluppato in **PHP 8.x** con astrazione **PDO** e transazioni atomiche per garantire l'integrità dei dati contabili.
 
 ### Caratteristiche Principali
-* **Transazioni Atomiche ACID (`salva_scarico.php`):**
+* **Transazioni Atomiche ACID (`api_scarico.php`):**
   Ogni operazione di scarico eseguita dai tablet esegue all'interno di una transazione SQL unica:
   1. Detrazione dalla giacenza generale dell'articolo (`articoli.giacenza_reale`).
   2. Detrazione specifica dalla pezza selezionata (`lotti_tessuti.giacenza_reale`).
@@ -82,11 +82,11 @@ Middleware sviluppato in **PHP 8.x** con astrazione **PDO** e transazioni atomic
 
 L'interscambio con Arca Evolution avviene in modalità asincrona batch senza interferire sulle tabelle transazionali del gestionale:
 
-1. **Sincronizzazione Mattutina Catalogo (`importa_arca.php`):**
+1. **Sincronizzazione Mattutina Catalogo (`importa_erp.php`):**
    * Elaborazione automatica dell'export anagrafico generato dall'ERP.
    * Filtro dinamico (blacklist) per escludere codici virtuali o spese accessorie (`MANODOPERA`, `SERVIZIO`, `ORD-DIR`, `TRASPORTO`).
    * Upsert massivo su database locale tramite `INSERT INTO ... ON DUPLICATE KEY UPDATE`.
-2. **Esportazione Scarichi di Produzione (`crea_file_arca.php`):**
+2. **Esportazione Scarichi di Produzione (`export_erp.php`):**
    * Estrazione incrementale dei movimenti con flag `esportato = 0`.
    * Normalizzazione dei dati e generazione del file tracciato CSV in cartella condivisa di rete.
    * Marcatura atomica dei record elaborati (`esportato = 1`) e importazione sul gestionale con creazione del documento di scarico fiscale (**SC**).
